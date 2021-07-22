@@ -1,0 +1,3 @@
+/home/oscar/Documentos/Projetos/trabalho-2-oscarkemuel/build/CMakeFiles/rebuild_cache.dir
+/home/oscar/Documentos/Projetos/trabalho-2-oscarkemuel/build/CMakeFiles/edit_cache.dir
+/home/oscar/Documentos/Projetos/trabalho-2-oscarkemuel/build/CMakeFiles/concordo.dir

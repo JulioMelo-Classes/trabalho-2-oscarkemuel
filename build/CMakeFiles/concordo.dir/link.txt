@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/concordo.dir/src/concordo.cpp.o CMakeFiles/concordo.dir/src/sistema.cpp.o CMakeFiles/concordo.dir/src/executor.cpp.o  -o concordo 
