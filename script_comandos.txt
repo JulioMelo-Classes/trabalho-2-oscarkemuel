@@ -22,22 +22,22 @@ set-server-invite-code 0 servidor-legal
 set-server-invite-code 0 servidor-inexistente 123
 set-server-invite-code 0 servidor-inexistente
 disconnect 0
-list-servers
+list-servers 0
 login isaacfranco@imd.ufrn.br senhalegal
-list-servers
+list-servers 0
 remove-server 0 servidor-inexistente
 remove-server 0 servidor-legal
-list-servers
+list-servers 0
 disconnect 0
 remove-server 0 servidor-ruim
 login isaacfranco@imd.ufrn.br senhalegal
 remove-server 0 servidor-ruim
 create-server 0 servidor-bacana
 create-server 0 servidor-fuderoso
-list-servers
+list-servers 0
 enter-server 0 servidor-bacana
 leave-server 0 servidor-bacana
-list-servers
+list-servers 0
 login isaacfranco@imd.ufrn.br senhalegal
 remove-server 0 servidor-bacana
 enter-server 0 servidor-bacana

@@ -75,7 +75,7 @@ string Executor::processarLinha(string linha) {
 
 	int id;
 	if(buf >> id){
-		
+
 		if (nomeComando == "disconnect") {
 			return sistema->disconnect(id);
 		}
@@ -133,13 +133,13 @@ string Executor::processarLinha(string linha) {
 
 		else if (nomeComando == "create-channel") {
 			string nome;
-			buf >> nome;			
+			buf >> nome;
 			return sistema->create_channel(id, nome);
 		}
 
 		else if (nomeComando == "enter-channel") {
 			string nome;
-			buf >> nome;			
+			buf >> nome;
 			return sistema->enter_channel(id, nome);
 		}
 
@@ -159,7 +159,7 @@ string Executor::processarLinha(string linha) {
 		else {
 			return "Comando não reconhecido [" + nomeComando + "]";
 		}
-	}	
+	}
 
   else {
     return "Comando precisa ser precedido de um id [" + nomeComando + "]";

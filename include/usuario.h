@@ -1,10 +1,13 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
+using namespace std;
 class Usuario{
-	/*
-		TODO implementação dos atributos e métodos
-	*/
+	public:
+		int id;
+    string nome;
+    string email;
+    string senha;
 };
 
 #endif
