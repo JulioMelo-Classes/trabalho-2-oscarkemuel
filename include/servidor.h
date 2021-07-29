@@ -3,6 +3,11 @@
 #include "canaltexto.h"
 
 using namespace std;
+
+/*
+CP1 classe Servidor 70%
+Removi pontos pois você não separou em .cpp
+*/
 class Servidor{
 	private:
     int usuarioDonoId; //<! ID do criador do servidor

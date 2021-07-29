@@ -42,6 +42,10 @@ string Sistema::quit() {
   exit(0);
 }
 
+
+/*
+A1.2 ok
+*/
 string Sistema::create_user (const string email, const string senha, const string nome) {
   cout << "Criando usuário " << nome << " (" << email << ")" << endl;
   for (int i = 0; i < this->usuarios.size(); i++){
@@ -64,6 +68,9 @@ string Sistema::create_user (const string email, const string senha, const strin
   return "Usuário criado";
 }
 
+/*
+A1.3 ok
+*/
 string Sistema::login(const string email, const string senha) {
   for (int i = 0; i < this->usuarios.size(); i++){
     if(this->usuarios[i].email == email && this->usuarios[i].senha == senha){
@@ -74,6 +81,9 @@ string Sistema::login(const string email, const string senha) {
   return "Senha ou usuário inválidos!";
 }
 
+/*
+A2.1 ok
+*/
 string Sistema::disconnect(int id) {
   if(userNotLogged(id)) return "Não está conectado";
 
@@ -82,6 +92,9 @@ string Sistema::disconnect(int id) {
   return "Usuário '" + usuarios[id].email + "' desconectado!";
 }
 
+/*
+A2.2 ok
+*/
 string Sistema::create_server(int id, const string nome) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(!serverNotExist(nome)) return "Servidor com esse nome já existe";
@@ -95,6 +108,9 @@ string Sistema::create_server(int id, const string nome) {
   return "Servidor '" + nome + "' criado";
 }
 
+/*
+A2.3 ok
+*/
 string Sistema::set_server_desc(int id, const string nome, const string descricao) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(serverNotExist(nome)) return "Servidor '" + nome +"' não existe";
@@ -107,6 +123,9 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
   return "Descrição do servidor '" + nome + "' modificada!";
 }
 
+/*
+A2.4 ok
+*/
 string Sistema::set_server_invite_code(int id, const string nome, const string codigo) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(serverNotExist(nome)) return "Servidor '" + nome +"' não existe";
@@ -123,6 +142,9 @@ string Sistema::set_server_invite_code(int id, const string nome, const string c
   }
 }
 
+/*
+A2.5 ok
+*/
 string Sistema::list_servers(int id) {
   if(userNotLogged(id)) return "Usuário não está logado";
 
@@ -136,6 +158,9 @@ string Sistema::list_servers(int id) {
   return "";
 }
 
+/*
+A2.6 ok
+*/
 string Sistema::remove_server(int id, const string nome) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(serverNotExist(nome)) return "Servidor '" + nome +"' não encontrado";
