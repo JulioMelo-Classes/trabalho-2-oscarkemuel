@@ -6,13 +6,7 @@
 using namespace std;
 
 bool Sistema::userNotLogged(int id) {
-  std::map< int, std::pair<std::string, std::string> >::iterator iteratorUser;
-  iteratorUser = usuariosLogados.find(id);
-
-  // if(iteratorUser == usuariosLogados.end()) cout << "user: " << usuariosLogados[id].first << endl;
-  // for (auto it:usuariosLogados){
-  //   cout << it.first << endl;
-  // }
+  auto iteratorUser = usuariosLogados.find(id);
 
   return iteratorUser == usuariosLogados.end();
 }
@@ -145,7 +139,7 @@ string Sistema::remove_server(int id, const string nome) {
 
   // Change Pair<Server, Channel> to Pair<"", "">
   for (int i = 0; i < usuariosLogados.size(); i++){
-    std::map< int, std::pair<std::string, std::string> >::iterator iteratorUser = usuariosLogados.find(i);
+    auto iteratorUser = usuariosLogados.find(i);
     if(iteratorUser->second.first == nome){
         iteratorUser->second.first = "";
         iteratorUser->second.second = "";
@@ -160,10 +154,10 @@ string Sistema::remove_server(int id, const string nome) {
 
   // remove server
   for(auto it = servidores.begin(); it != servidores.end();){
-    if((*it).getNome() == nome)
+    if((*it).getNome() == nome){
       it = this->servidores.erase(it);
-    else
-      it++;
+      break;
+    }
   }
 
   return "Servidor '" + nome + "' removido com sucesso";

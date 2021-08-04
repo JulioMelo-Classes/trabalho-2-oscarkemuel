@@ -1,5 +1,11 @@
 #ifndef CANALTEXTO_H
 #define CANALTEXTO_H
+#include <vector>
+#include <string>
+#include <iostream>
+#include <map>
+
+using namespace std;
 
 class Mensagem{
   public:

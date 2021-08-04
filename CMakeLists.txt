@@ -9,7 +9,8 @@ include_directories( include )
 # Cria um executável com nome "concordo", adiciona neste executável os arquivos src/concordo.cpp src/sistema.cpp src/executor.cpp
 add_executable( concordo
                 src/concordo.cpp
-                src/sistema.cpp 
-								src/executor.cpp )
+                src/sistema.cpp
+								src/executor.cpp
+                src/servidor.cpp )
 
 # The end
