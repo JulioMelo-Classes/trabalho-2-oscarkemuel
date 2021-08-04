@@ -20,7 +20,7 @@ make
 ```
 
 ### Execução
-Para executar com suas apostas, rode o seguinte comando:
+Para executar comandos já criados, rode o seguinte comando:
 ```
 ./concordo < ../script_comandos.txt
 ```
