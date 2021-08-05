@@ -30,6 +30,13 @@ class Sistema {
 		*/
     bool serverNotExist(string name);
 
+    /*! Verifica se existe um canal com este nome no servidor que o usuário está visualizando.
+				@param int int com o ID do usuário
+				@param name nome do canal a ser verificado
+				@return um boolean, true para existe e false para não existe."
+		*/
+    bool existChannelInServerLogged(int id, string name);
+
     /*! Buscar a posição do servidor escolhido pelo nome.
 				@param nome string com o nome do servidor para ser encontrado
 				@return um int com a posição do servidor."

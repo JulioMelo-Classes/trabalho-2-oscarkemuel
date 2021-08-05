@@ -50,5 +50,20 @@ enter-server 2 servidor-sinistro
 login isaacfranco@imd.ufrn.br senhalegal
 enter-server 0 servidor-sinistro
 list-participants 0
+list-channels 0
+create-channel 0 casa-de-mae-joana
+create-channel 0 casa-de-mae-joana
+list-channels 0
+enter-channel 0 casa-de-mae
+enter-channel 0 casa-de-mae-joana
+leave-channel 1
+leave-channel 0
+enter-channel 0 casa-de-mae-joana
+send-message 0 Oi pessoal querem TC?
+send-message 0 Oi opa tu do bem?
+send-message 1 Oi opa tu do bem?
+enter-channel 1 casa-de-mae-joana
+send-message 1 agora vai
+list-messages 0
 quit
 create-user naodeveprocessar@imd.ufrn.br naodevechegaraqui Não deve chegar aqui

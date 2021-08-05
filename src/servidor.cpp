@@ -42,6 +42,53 @@ void Servidor::listParticipants(std::vector<Usuario> usuarios){
   }
 }
 
+void Servidor::listChannels(){
+  int numberOfChannels = this->canalTexto.size();
+  if(numberOfChannels > 0){
+    cout << "#canais de texto" << endl;
+    for (int i = 0; i < numberOfChannels; i++){
+      cout << this->canalTexto[i].getName() << endl;
+    }
+  }else{
+    cout << "Não há canais no servidor" << endl;
+  }
+}
+
+bool Servidor::haveChannel(string nome){
+  for (int i = 0; i < this->canalTexto.size(); i++){
+    if(canalTexto[i].getName() == nome){
+      return true;
+    }
+  }
+
+  return false;
+}
+
+void Servidor::addChannel(CanalTexto canal){
+  this->canalTexto.push_back(canal);
+}
+
+void Servidor::addMessageByNameChannel(string channelName, int id, string message){
+  for (int i = 0; i < this->canalTexto.size(); i++){
+    if(canalTexto[i].getName() == channelName){
+      auto now = time(NULL);
+      canalTexto[i].addMessage(now, id, message);
+
+      break;
+    }
+  }
+}
+
+void Servidor::listMessagesByName(string channelName, vector<Usuario> usuarios){
+  for (int i = 0; i < this->canalTexto.size(); i++){
+    if(canalTexto[i].getName() == channelName){
+      canalTexto[i].listMessages(usuarios);
+
+      break;
+    }
+  }
+}
+
 void Servidor::setDescricao(string descricao){
   this->descricao = descricao;
 }

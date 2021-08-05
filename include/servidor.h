@@ -40,6 +40,32 @@ class Servidor{
 		*/
     bool participantIsConected(int id);
 
+    /*! Printa a lista de canais de texto do servidor.*/
+    void listChannels();
+
+    /*! Verifica se existe um canal com o nome desejado.
+				@param nome string com o nome do canal a ser verificado.
+		*/
+    bool haveChannel(string nome);
+
+    /*! Adiciona um novo canal no vetor de canais de texto.
+				@param canal CanalTexto a ser adicionado no vetor.
+		*/
+    void addChannel(CanalTexto canal);
+
+    /*! Seleciona o canal pelo nome e chama o método de adicionar mensagem.
+				@param channelName string com o nome do canal que a mensagem deve ser adicionada.
+				@param id int com o ID do usuário que está enviando a mensagem.
+				@param menssage string com o conteúdo da mensagem.
+		*/
+    void addMessageByNameChannel(string channelName, int id, string menssage);
+
+    /*! Seleciona o canal pelo nome e chama o método de printar mensagens do canal.
+				@param channelName string com o nome do canal que deseja listar mensagem.
+				@param usuarios vetor de usuário do servidor.
+		*/
+    void listMessagesByName(string channelName, vector<Usuario> usuarios);
+
     /*! Seta a descrição do servidor.
 				@param descricao uma string com a descrição do servidor.
 		*/

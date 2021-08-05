@@ -21,6 +21,15 @@ bool Sistema::serverNotExist(string nome){
   return true;
 }
 
+bool Sistema::existChannelInServerLogged(int id, string nome){
+  auto iteratorUser = usuariosLogados.find(id);
+  string serverName = iteratorUser->second.first;
+
+  int serverID = serverIndexByName(serverName);
+
+  return this->servidores[serverID].haveChannel(nome);
+}
+
 int Sistema::serverIndexByName(string nome){
   for (int i = 0; i < this->servidores.size(); i++){
     if(servidores[i].getNome() == nome){
@@ -228,27 +237,80 @@ string Sistema::list_participants(int id) {
 }
 
 string Sistema::list_channels(int id) {
-  return "list_channels NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+
+  auto iteratorUser = usuariosLogados.find(id);
+  string nome = iteratorUser->second.first;
+
+  for (int i = 0; i < this->servidores.size(); i++){
+    if(servidores[i].getNome() == nome){
+      servidores[i].listChannels();
+
+      break;
+    }
+  }
+
+  return "";
 }
 
 string Sistema::create_channel(int id, const string nome) {
-  return "create_channel NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+  else if(existChannelInServerLogged(id, nome)) return "Canal de texto '" + nome + "' já existe";
+
+  CanalTexto channel(nome);
+
+  auto iteratorUser = usuariosLogados.find(id);
+  string serverName = iteratorUser->second.first;
+  int serverID = serverIndexByName(serverName);
+
+  this->servidores[serverID].addChannel(channel);
+
+  return "Canal de texto '" + nome + "' criado";
 }
 
 string Sistema::enter_channel(int id, const string nome) {
-  return "enter_channel NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+  else if(!existChannelInServerLogged(id, nome)) return "Canal '" + nome + "' não existe";
+
+  auto iteratorUser = usuariosLogados.find(id);
+  iteratorUser->second.second = nome;
+
+  return "Entrou no canal '" + nome + "'";
 }
 
 string Sistema::leave_channel(int id) {
-  return "leave_channel NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+  auto iteratorUser = usuariosLogados.find(id);
+  string channelName = iteratorUser->second.second;
+  if(channelName.size() == 0) return "Você não está em nenhum canal";
+
+  iteratorUser->second.second = "";
+
+  return "Saindo do canal '" + channelName + "' ";
 }
 
 string Sistema::send_message(int id, const string mensagem) {
-  return "send_message NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+  auto iteratorUser = usuariosLogados.find(id);
+  string channelName = iteratorUser->second.second;
+  string serverName = iteratorUser->second.first;
+  if(channelName.size() == 0) return "Você não está em nenhum canal";
+
+  int serverID = serverIndexByName(serverName);
+  this->servidores[serverID].addMessageByNameChannel(channelName, id, mensagem);
+
+  return "Mensagem enviada";
 }
 
 string Sistema::list_messages(int id) {
-  return "list_messages NÃO IMPLEMENTADO";
-}
+  if(userNotLogged(id)) return "Usuário não está logado";
+  auto iteratorUser = usuariosLogados.find(id);
+  string channelName = iteratorUser->second.second;
+  string serverName = iteratorUser->second.first;
+  if(channelName.size() == 0) return "Você não está em nenhum canal";
 
-/* IMPLEMENTAR MÉTODOS PARA OS COMANDOS RESTANTES */
+  int serverID = serverIndexByName(serverName);
+  this->servidores[serverID].listMessagesByName(channelName, this->usuarios);
+
+  return "";
+}
