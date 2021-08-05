@@ -25,20 +25,24 @@ Para executar comandos já criados, rode o seguinte comando:
 ./concordo < ../script_comandos.txt
 ```
 
-<!-- ## Testando erros
-### Caso 1 - Repetição de números
+## Testando erros
+### Teste 1 - Testes de Criação de usuário, login e desconnect;
 ```
-./kenobet test1.txt
+./concordo < ../data/test_1.txt
 ```
-### Caso 2 - Quantidade de números na aposta superior a 15 números;
+### Teste 2 - Criação, remoção, descrição, listagem e convite de servidores;
 ```
-./kenobet test2.txt
+./concordo < ../data/test_2.txt
 ```
-### Caso 3 - Presença de caracteres estranhos (exemplo: strings);
+### Teste 3 - Entrar, sair e listagem de participantes do servidor;
 ```
-./kenobet test3.txt
+./concordo < ../data/test_3.txt
 ```
-### Caso 4 - Formato diferente;
+### Teste 4 - Criar, entrar e sair de canais;
 ```
-./kenobet test4.txt
-``` -->
+./concordo < ../data/test_4.txt
+```
+### Teste 5 - Envio e listagem de mensagens;
+```
+./concordo < ../data/test_5.txt
+```
