@@ -1,0 +1,18 @@
+create-user isaacfranco@imd.ufrn.br senhalegal Isaac Franco Fernandes
+create-user julio@imd.ufrn.br senha Julio
+login isaacfranco@imd.ufrn.br senhalegal
+login julio@imd.ufrn.br senha
+create-server 0 servidor-bacana
+create-server 1 servidor-teste
+enter-server 0 servidor-bacana
+enter-server 1 servidor-teste
+create-channel 0 casa-de-mae-joana
+enter-channel 0 casa-de-mae-joana
+send-message 0 no minimo 9 nesse trabalho hein
+send-message 1 no minimo 9 nesse trabalho hein
+enter-channel 1 casa-de-mae-joana
+send-message 1 no minimo 9 nesse trabalho hein
+leave-server 1 servidor-teste
+enter-channel 1 casa-de-mae-joana
+list-messages 0
+quit

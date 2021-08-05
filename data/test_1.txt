@@ -1,0 +1,10 @@
+create-user isaacfranco@imd.ufrn.br senhalegal Isaac Franco Fernandes
+create-user isaacfranco@imd.ufrn.br senhalegal Isaac Franco Fernandes
+create-user renan@imd.ufrn.br senha Renan
+create-user julio@imd.ufrn.br senha Julio
+login isaacfranco@imd.ufrn.br senhalegal
+disconnect 0
+disconnect 1
+login isaacfranco@imd.ufrn.br SENHA_ERRADA
+login isaacfranco@imd.ufrn.br senhalegal
+quit

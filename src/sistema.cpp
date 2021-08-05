@@ -179,7 +179,7 @@ string Sistema::enter_server(int id, const string nome, const string codigo) {
       if(code.size() > 0 && codigo.size() == 0 && !isOwner) return "Servidor requer código de convite";
       else if(servidores[i].participantIsConected(id)) return "Você já está nesse servidor";
       else if(code == codigo) isEnabled = true;
-      else return "Código inválido";
+      else if(!isOwner) return "Código inválido";
 
       if(code.size() == 0 || isOwner || isEnabled){
         servidores[i].addParticipant(id);
@@ -261,8 +261,9 @@ string Sistema::create_channel(int id, const string nome) {
 
   auto iteratorUser = usuariosLogados.find(id);
   string serverName = iteratorUser->second.first;
-  int serverID = serverIndexByName(serverName);
+  if(serverName.size() == 0) return "Você não está conectado a um servidor";
 
+  int serverID = serverIndexByName(serverName);
   this->servidores[serverID].addChannel(channel);
 
   return "Canal de texto '" + nome + "' criado";
@@ -273,6 +274,10 @@ string Sistema::enter_channel(int id, const string nome) {
   else if(!existChannelInServerLogged(id, nome)) return "Canal '" + nome + "' não existe";
 
   auto iteratorUser = usuariosLogados.find(id);
+  string serverName = iteratorUser->second.first;
+
+  if(serverName.size() == 0) return "Você não está conectado a um servidor";
+
   iteratorUser->second.second = nome;
 
   return "Entrou no canal '" + nome + "'";

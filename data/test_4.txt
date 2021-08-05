@@ -1,0 +1,13 @@
+create-user isaacfranco@imd.ufrn.br senhalegal Isaac Franco Fernandes
+create-user julio@imd.ufrn.br senha Julio
+login isaacfranco@imd.ufrn.br senhalegal
+login julio@imd.ufrn.br senha
+create-server 0 servidor-bacana
+enter-server 0 servidor-bacana
+create-channel 0 casa-de-mae-joana
+create-channel 0 casa-de-mae-joana
+enter-channel 0 casa-de-mae
+enter-channel 0 casa-de-mae-joana
+leave-channel 1
+leave-channel 0
+quit
