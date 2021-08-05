@@ -1,6 +1,7 @@
 #ifndef SERVIDOR_H
 #define SERVIDOR_H
 #include "canaltexto.h"
+#include "usuario.h"
 
 using namespace std;
 class Servidor{
@@ -23,6 +24,21 @@ class Servidor{
 				@param id um id válido de algum usuário cadastrado e logado no sistema.
 		*/
     void addParticipant(int id);
+
+    /*! Remove um participante no vetor de participantesIDs.
+				@param id um id válido de algum usuário cadastrado e logado no sistema.
+		*/
+    void removeParticipant(int id);
+
+    /*! Printa os participantes que estão conectados ao servidor.
+				@param usuarios o vetor de usuários do sistema.
+		*/
+    void listParticipants(std::vector<Usuario> usuarios);
+
+    /*! Verifica se o usuário está conectado no servidor.
+				@param id um id válido de algum usuário cadastrado e logado no sistema.
+		*/
+    bool participantIsConected(int id);
 
     /*! Seta a descrição do servidor.
 				@param descricao uma string com a descrição do servidor.

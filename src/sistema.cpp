@@ -51,8 +51,6 @@ string Sistema::create_user (const string email, const string senha, const strin
     id = sizeUsers;
   }
 
-  // cout << "ID: " << id << " USUARIO: " << email << endl;
-
   this->usuarios.push_back({id, nome, email, senha});
 
   return "Usuário criado";
@@ -81,8 +79,6 @@ string Sistema::create_server(int id, const string nome) {
   else if(!serverNotExist(nome)) return "Servidor com esse nome já existe";
 
   Servidor server(id, nome);
-
-  server.addParticipant(id);
 
   servidores.push_back(server);
 
@@ -143,14 +139,8 @@ string Sistema::remove_server(int id, const string nome) {
     if(iteratorUser->second.first == nome){
         iteratorUser->second.first = "";
         iteratorUser->second.second = "";
-      }
+    }
   }
-
-  // for (int i = 0; i < usuariosLogados.size(); i++){
-  //   cout << (*usuariosLogados.find(i)).first << " - " << (*usuariosLogados.find(i)).second.first << endl;
-  // }
-
-  // cout << "USUARIOS NO SERVIDOR ANTES DE DELETAR: " << usuariosLogados.size() << endl;
 
   // remove server
   for(auto it = servidores.begin(); it != servidores.end();){
@@ -164,15 +154,77 @@ string Sistema::remove_server(int id, const string nome) {
 }
 
 string Sistema::enter_server(int id, const string nome, const string codigo) {
-  return "enter_server NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+  else if(serverNotExist(nome)) return "Servidor '" + nome +"' não encontrado";
+
+  for (int i = 0; i < this->servidores.size(); i++){
+    if(servidores[i].getNome() == nome){
+
+      string code = servidores[i].getCodigoConvite();
+      int owner = servidores[i].getUsuarioDonoId();
+      float isOwner = false;
+      float isEnabled = false;
+
+      if(owner == id) isOwner = true;
+
+      if(code.size() > 0 && codigo.size() == 0 && !isOwner) return "Servidor requer código de convite";
+      else if(servidores[i].participantIsConected(id)) return "Você já está nesse servidor";
+      else if(code == codigo) isEnabled = true;
+      else return "Código inválido";
+
+      if(code.size() == 0 || isOwner || isEnabled){
+        servidores[i].addParticipant(id);
+
+        auto iteratorUser = usuariosLogados.find(id);
+        iteratorUser->second.first = nome;
+        iteratorUser->second.second = "";
+      };
+
+      break;
+    }
+  }
+
+  return "Entrou no servidor '" + nome + "' com sucesso";
 }
 
 string Sistema::leave_server(int id, const string nome) {
-  return "leave_server NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+  else if(serverNotExist(nome)) return "Servidor '" + nome +"' não encontrado";
+
+  for (int i = 0; i < this->servidores.size(); i++){
+    if(servidores[i].getNome() == nome){
+      auto iteratorUser = usuariosLogados.find(id);
+
+      // verifica se o usuário está em algum servidor
+      if(iteratorUser->second.first.size() == 0) return "Você não está em qualquer servidor";
+      // verifica se o usuário está listado nos participantsIDs
+      if(!servidores[i].participantIsConected(id)) return "Você não está nesse servidor";
+
+      servidores[i].removeParticipant(id);
+      iteratorUser->second.first = "";
+      iteratorUser->second.second = "";
+      break;
+    }
+  }
+
+  return "Saindo do servidor" + nome;
 }
 
 string Sistema::list_participants(int id) {
-  return "list_participants NÃO IMPLEMENTADO";
+  if(userNotLogged(id)) return "Usuário não está logado";
+
+  auto iteratorUser = usuariosLogados.find(id);
+  string nome = iteratorUser->second.first;
+
+  for (int i = 0; i < this->servidores.size(); i++){
+    if(servidores[i].getNome() == nome){
+      servidores[i].listParticipants(usuarios);
+
+      break;
+    }
+  }
+
+  return "";
 }
 
 string Sistema::list_channels(int id) {
