@@ -35,6 +35,10 @@ void Executor::iniciar(istream &inputStream, ostream &outputStream) {
   while (! this->sair)
   {
     if (std::getline(inputStream, linha)) {
+	  if(linha.empty() || linha[0] == '#'){
+	  	cout<<linha<<endl;
+		continue;
+	  }
       saida = processarLinha(linha);
       outputStream << saida << endl;
     }

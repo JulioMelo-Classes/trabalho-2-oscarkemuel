@@ -30,6 +30,7 @@ ou rode isso para ter acesso ao programa sem scripts:
 ```
 
 ## Testando funcionalidades
+<!--documentação dos casos de teste ok!-->
 ### Teste 1 - Testes de Criação de usuário, login e desconnect;
 ```
 ./concordo < ../data/test_1.txt

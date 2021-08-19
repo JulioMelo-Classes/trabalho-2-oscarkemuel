@@ -15,7 +15,8 @@ void Servidor::addParticipant(int id){
 }
 
 void Servidor::removeParticipant(int id){
-  for(auto it = this->participantesIDs.begin(); it != this->participantesIDs.end();){
+  //esqueceu um it++ aqui?
+  for(auto it = this->participantesIDs.begin(); it != this->participantesIDs.end(); it++){
     if((*it) == id){
       it = this->participantesIDs.erase(it);
       break;

@@ -162,6 +162,11 @@ string Sistema::remove_server(int id, const string nome) {
   return "Servidor '" + nome + "' removido com sucesso";
 }
 
+/*
+A2.7 0.8
+Quando um usuário usa enter-server você deve atualizar seu servidor vizualizado mesmo quando
+ele já participa do servidor, removi 20% por isso
+*/
 string Sistema::enter_server(int id, const string nome, const string codigo) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(serverNotExist(nome)) return "Servidor '" + nome +"' não encontrado";
@@ -196,6 +201,9 @@ string Sistema::enter_server(int id, const string nome, const string codigo) {
   return "Entrou no servidor '" + nome + "' com sucesso";
 }
 
+/*
+A2.8 ok
+*/
 string Sistema::leave_server(int id, const string nome) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(serverNotExist(nome)) return "Servidor '" + nome +"' não encontrado";
@@ -219,6 +227,9 @@ string Sistema::leave_server(int id, const string nome) {
   return "Saindo do servidor" + nome;
 }
 
+/*
+A2.9 ok
+*/
 string Sistema::list_participants(int id) {
   if(userNotLogged(id)) return "Usuário não está logado";
 
@@ -236,6 +247,9 @@ string Sistema::list_participants(int id) {
   return "";
 }
 
+/*
+B1.1 ok
+*/
 string Sistema::list_channels(int id) {
   if(userNotLogged(id)) return "Usuário não está logado";
 
@@ -253,6 +267,9 @@ string Sistema::list_channels(int id) {
   return "";
 }
 
+/*
+B1.2 ok
+*/
 string Sistema::create_channel(int id, const string nome) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(existChannelInServerLogged(id, nome)) return "Canal de texto '" + nome + "' já existe";
@@ -269,6 +286,9 @@ string Sistema::create_channel(int id, const string nome) {
   return "Canal de texto '" + nome + "' criado";
 }
 
+/*
+B1.3 ok
+*/
 string Sistema::enter_channel(int id, const string nome) {
   if(userNotLogged(id)) return "Usuário não está logado";
   else if(!existChannelInServerLogged(id, nome)) return "Canal '" + nome + "' não existe";
@@ -283,6 +303,9 @@ string Sistema::enter_channel(int id, const string nome) {
   return "Entrou no canal '" + nome + "'";
 }
 
+/*
+B1.4 ok
+*/
 string Sistema::leave_channel(int id) {
   if(userNotLogged(id)) return "Usuário não está logado";
   auto iteratorUser = usuariosLogados.find(id);
@@ -294,6 +317,9 @@ string Sistema::leave_channel(int id) {
   return "Saindo do canal '" + channelName + "' ";
 }
 
+/*
+B2.1 ok
+*/
 string Sistema::send_message(int id, const string mensagem) {
   if(userNotLogged(id)) return "Usuário não está logado";
   auto iteratorUser = usuariosLogados.find(id);
@@ -307,6 +333,9 @@ string Sistema::send_message(int id, const string mensagem) {
   return "Mensagem enviada";
 }
 
+/*
+B2.2 ok
+*/
 string Sistema::list_messages(int id) {
   if(userNotLogged(id)) return "Usuário não está logado";
   auto iteratorUser = usuariosLogados.find(id);

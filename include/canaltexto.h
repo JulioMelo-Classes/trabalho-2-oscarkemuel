@@ -9,6 +9,9 @@
 
 using namespace std;
 
+/*
+CP2 ok
+*/
 class CanalTexto{
 	private:
     string nome; //<! Uma string com o nome do canal, conforme o comando create-channel

@@ -7,6 +7,9 @@
 
 using namespace std;
 
+/*
+CP2 ok
+*/
 class Mensagem{
   public:
     string dataHora; //<! Uma string com texto representando um timestamp com a data e hora em que a mensagem foi enviada no formato <DD/MM/AAAA - HH:MM>, exemplo: <08/03/2021 - 11:53>
